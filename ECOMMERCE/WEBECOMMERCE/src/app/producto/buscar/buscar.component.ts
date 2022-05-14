@@ -29,6 +29,7 @@ export class BuscarComponent implements OnInit {
 
   buscar(){
     this.cargando = true;
+    this.productos = [];
     this.ventaService.buscarProducto(this.termino).subscribe(
       (prod) => {
         this.productos = prod.productos;
