@@ -9,7 +9,7 @@ import {ButtonModule} from 'primeng/button';
 import {TabViewModule} from 'primeng/tabview';
 import {DividerModule} from 'primeng/divider';
 import {DataViewModule} from 'primeng/dataview';
-
+import {TableModule} from 'primeng/table';
 
 
 @NgModule({
@@ -24,7 +24,8 @@ import {DataViewModule} from 'primeng/dataview';
     ButtonModule,
     TabViewModule,
     DividerModule,
-    DataViewModule
+    DataViewModule,
+    TableModule
  
   ],
   exports: [
@@ -36,7 +37,8 @@ import {DataViewModule} from 'primeng/dataview';
     ButtonModule,
     TabViewModule,
     DividerModule,
-    DataViewModule
+    DataViewModule,
+    TableModule
    
   ]
 })

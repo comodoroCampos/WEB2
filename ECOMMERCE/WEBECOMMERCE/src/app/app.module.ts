@@ -7,6 +7,7 @@ import { SidenavModule } from './sidenav/sidenav.module';
 import { HttpClientModule } from '@angular/common/http';
 import { VentaModule } from './venta/venta.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ProductoModule } from './producto/producto.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     VentaModule,
     SidenavModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ProductoModule
   ],
   providers: [],
   bootstrap: [AppComponent]

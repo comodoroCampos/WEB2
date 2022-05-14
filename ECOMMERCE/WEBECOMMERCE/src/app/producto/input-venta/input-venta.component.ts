@@ -2,7 +2,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Producto } from '../../interfaces/interface';
 import { debounceTime } from 'rxjs/operators';
 import { Subject } from 'rxjs';
-import { VentaService } from '../venta.service';
+import { VentaService } from '../../venta/venta.service';
 import Swal from 'sweetalert2';
 
 @Component({
