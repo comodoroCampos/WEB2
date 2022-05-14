@@ -11,3 +11,7 @@ export interface Producto {
     imagen:      string[];
     codigo:      string;
 }
+export interface Respuesta {
+    ok: boolean;
+    mensaje: string;
+}

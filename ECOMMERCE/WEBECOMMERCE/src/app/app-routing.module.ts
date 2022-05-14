@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SidenavComponent } from './sidenav/sidenav/sidenav.component';
+import { InputVentaComponent } from './venta/input-venta/input-venta.component';
 
 const routes: Routes = [
   {
@@ -9,10 +10,9 @@ const routes: Routes = [
     pathMatch: 'full'
 },
 {
-  path: 'deprueba',
-  component: SidenavComponent
+  path: 'producto',
+  component: InputVentaComponent
 },
-
 {
     path: '**',
     redirectTo: ''

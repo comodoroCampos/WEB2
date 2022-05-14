@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { MaterialModule } from '../material/material.module';
 import { AppRoutingModule } from '../app-routing.module';
+import { VentaModule } from '../venta/venta.module';
 
 
 
@@ -13,7 +14,7 @@ import { AppRoutingModule } from '../app-routing.module';
   imports: [
     CommonModule,
     MaterialModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   exports:[
     SidenavComponent

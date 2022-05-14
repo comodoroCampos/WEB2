@@ -1,0 +1,1 @@
+export const URL_SERVICIOS = 'http://52.4.72.215';

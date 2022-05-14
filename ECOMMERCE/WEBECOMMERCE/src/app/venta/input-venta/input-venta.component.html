@@ -1,1 +1,64 @@
 
+<form autocomplete="off">
+    <p-divider align="left">
+        <div class="inline-flex align-items-center">
+            <i class="pi pi-user mr-2"></i>
+            <b>Producto</b>
+        </div>
+    </p-divider>
+
+
+
+
+
+    <div class="container">
+        <div class="row">
+
+            <mat-form-field class="col-md-6">
+                <mat-label>Nombre</mat-label>
+                <input matInput type="text" name="wea" [(ngModel)]="producto.nombre" (input)="teclaPresionada()"
+                    placeholder="placeholder" required />
+            </mat-form-field>
+
+            <mat-form-field class="col-md-6">
+                <mat-label>Descripcion</mat-label>
+                <input matInput type="text" name="descripcion" [(ngModel)]="producto.descripcion" (input)="teclaPresionada()"
+                    placeholder="la Wea" required />
+            </mat-form-field>
+
+
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+
+            <mat-form-field class="col-md-6">
+                <mat-label>Codigo</mat-label>
+                <input matInput type="text" name="codigo" [(ngModel)]="producto.codigo" (input)="teclaPresionada()"
+                    placeholder="LaWEQla" required />
+            </mat-form-field>
+
+            <mat-form-field class="col-md-6">
+                <mat-label>Precio</mat-label>
+                <input matInput type="text" name="precio" [(ngModel)]="producto.precio" (input)="teclaPresionada()"
+                    placeholder="1.000" required />
+            </mat-form-field>
+
+
+        </div>
+    </div>
+
+   
+       
+
+
+
+    <div class="container" style="margin-top: 20px;">
+        <div class="row">
+            <button mat-raised-button color="primary" class="col-md-12" (click)="guardar()" >
+                Guardar
+                <mat-icon>save</mat-icon>
+            </button>
+        </div>
+    </div>
+</form>
