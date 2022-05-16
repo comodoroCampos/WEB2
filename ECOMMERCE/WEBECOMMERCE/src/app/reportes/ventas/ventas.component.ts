@@ -1,5 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { debounceTime, Subject } from 'rxjs';
+import { Venta } from 'src/app/interfaces/interface';
+import { ServService } from '../serv.service';
 
 @Component({
   selector: 'app-ventas',
@@ -16,10 +18,8 @@ export class VentasComponent implements OnInit {
   @Output() onDebounce: EventEmitter<Date> = new EventEmitter();
   @Output() onEnter: EventEmitter<Date> = new EventEmitter();
   debouncer: Subject<Date> = new Subject();
-  constructor() {
-   
-
-    this.empleado = '';
+  constructor(private ventaService: ServService) {
+    this.fecha_desde = new Date;
   }
 
   ngOnInit(): void {
@@ -28,9 +28,9 @@ export class VentasComponent implements OnInit {
       this.onDebounce.emit(valor);
     });
   }
-  
-  
-  
+
+
+
   selecionaFecha() {
     this.disable_hasta = true;
     if (this.fecha_desde) {
@@ -45,5 +45,23 @@ export class VentasComponent implements OnInit {
     console.log(this.fecha_desde);
     console.log(this.fecha_hasta);
     console.log(this.empleado);
+  }
+
+  cargando: boolean = false;
+  ventas: Venta[] = []
+
+  buscarVentas() {
+    this.cargando = true;
+    this.ventas = [];
+    this.ventaService.buscarVentaPorFecha(this.fecha).subscribe(
+      (ven) => {
+        this.ventas = ven.ventas;
+        this.cargando = false;
+
+      }, (err) => {
+        this.cargando = false;
+        this.ventas = [];
+      }
+    );
   }
 }
