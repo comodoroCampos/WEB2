@@ -8,7 +8,7 @@
             <mat-form-field class="col-md-4">
                 <mat-label>Fecha hasta</mat-label>
                 <input matInput [matDatepicker]="desde" name="fecha_desde" [(ngModel)]="fecha_desde" [max]="fecha_hasta"
-                    (input)="selecionaFecha()"  required>
+                    (input)="selecionaFecha()" (dateChange)="selecionaFecha()"  required>
                 <mat-hint>MM/DD/YYYY</mat-hint>
                 <mat-datepicker-toggle matSuffix [for]="desde"></mat-datepicker-toggle>
                 <mat-datepicker #desde disabled="false"></mat-datepicker>
@@ -16,11 +16,11 @@
 
             <mat-form-field class="col-md-4">
                 <mat-label>Fecha hasta</mat-label>
-                <input matInput [matDatepicker]="hasta" name="fecha_hasta" [(ngModel)]="fecha_hasta"
-                    (input)="selecionaFecha()"  [disabled]="disable_hasta"  required>
+                <input matInput [matDatepicker]="hasta" name="fecha_hasta" [(ngModel)]="fecha_hasta" [min]="fecha_desde"
+                    (input)="selecionaFecha()" (dateChange)="selecionaFecha()"  [disabled]="disable_hasta"  required>
                 <mat-hint>MM/DD/YYYY</mat-hint>
                 <mat-datepicker-toggle matSuffix [for]="hasta"></mat-datepicker-toggle>
-                <mat-datepicker #hasta [disabled]="disable_hasta"></mat-datepicker>
+                <mat-datepicker #hasta [disabled]="disable_hasta" ></mat-datepicker>
             </mat-form-field>
 
             <mat-form-field class="col-md-4">

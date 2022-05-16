@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { debounceTime, Subject } from 'rxjs';
 
 @Component({
   selector: 'app-ventas',
@@ -6,21 +7,34 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./ventas.component.css'],
 })
 export class VentasComponent implements OnInit {
-  fecha_desde: Date;
-  fecha_hasta: Date;
+  fecha_desde?: Date;
+  fecha_hasta?: Date;
   disable_hasta: boolean = true;
   empleado: string = '';
 
+
+  @Output() onDebounce: EventEmitter<Date> = new EventEmitter();
+  @Output() onEnter: EventEmitter<Date> = new EventEmitter();
+  debouncer: Subject<Date> = new Subject();
   constructor() {
-    this.fecha_desde = new Date();
-    this.fecha_hasta = new Date();
+   
+
     this.empleado = '';
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+
+    this.debouncer.pipe(debounceTime(300)).subscribe((valor) => {
+      this.onDebounce.emit(valor);
+    });
+  }
+  
+  
+  
   selecionaFecha() {
-    this.disable_hasta = false;
-    if (this.fecha_desde < this.fecha_hasta) {
+    this.disable_hasta = true;
+    if (this.fecha_desde) {
+      this.debouncer.next(this.fecha_desde);
       this.disable_hasta = false;
     }
     console.log(this.fecha_desde);
