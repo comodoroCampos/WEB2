@@ -7,6 +7,7 @@ import { ProveedorComponent } from './proveedor/proveedor.component';
 import { PostVentaComponent } from './post-venta/post-venta.component';
 import { MaterialModule } from '../material/material.module';
 import { PrimengModule } from '../primeng/primeng.module';
+import { ResultadosVentasComponent } from './resultados-ventas/resultados-ventas.component';
 
 
 
@@ -16,7 +17,8 @@ import { PrimengModule } from '../primeng/primeng.module';
     InventarioComponent,
     DespachoComponent,
     ProveedorComponent,
-    PostVentaComponent
+    PostVentaComponent,
+    ResultadosVentasComponent
   ],
   imports: [
     CommonModule,
@@ -28,7 +30,8 @@ import { PrimengModule } from '../primeng/primeng.module';
     InventarioComponent,
     DespachoComponent,
     ProveedorComponent,
-    PostVentaComponent
+    PostVentaComponent,
+    ResultadosVentasComponent
   ]
 })
 export class ReportesModule { }

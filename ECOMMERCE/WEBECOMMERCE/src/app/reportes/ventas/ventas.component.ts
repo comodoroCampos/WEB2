@@ -43,9 +43,9 @@ export class VentasComponent implements OnInit {
 
 
   buscar() {
-    this.cargando = true;
+    console.log(this.empleado);
     this.ventas = [];
-    if (!this.fecha_desde||this.fecha_hasta||this.empleado=='') {
+    if (!this.fecha_desde||!this.fecha_hasta||this.empleado=='') {
       Swal.fire({
         icon:  'error',
         title: 'Selecciona una fecha y usuario Aweonao',
@@ -53,6 +53,7 @@ export class VentasComponent implements OnInit {
       });
       return;
     }
+    this.cargando = true;
     this.ventaService.buscarVentaPorFecha(this.fecha_desde!,this.fecha_hasta!,this.empleado).subscribe(
       (ven) => {
         this.ventas = ven.venta;

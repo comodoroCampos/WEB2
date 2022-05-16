@@ -42,5 +42,12 @@
     
 
 </form>
+<p-divider></p-divider>
+<div class="container" >
+    <div class="row" >
+    <mat-spinner class="col-md-12" *ngIf="(cargando)" ></mat-spinner>
+    <app-resultados-ventas class="col-md-12" [ventas]="ventas" [ventasAux]="ventas" *ngIf="(ventas.length>0)"></app-resultados-ventas>
 
 
+</div>
+</div>
