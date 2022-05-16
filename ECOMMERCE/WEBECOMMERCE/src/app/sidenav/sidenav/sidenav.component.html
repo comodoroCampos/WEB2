@@ -1,52 +1,60 @@
 <mat-sidenav-container fullscreen>
-    
+
     <mat-sidenav #sidenav mode="push">
-        
+
         <mat-toolbar color="primary">
-            
+
             <span class="spacer"></span>
-            <button mat-icon-button
-                    (click)="sidenav.toggle()">
+            <button mat-icon-button (click)="sidenav.toggle()">
                 <mat-icon>menu</mat-icon>
             </button>
-            
+
         </mat-toolbar>
 
         <mat-nav-list>
-        
-            <a routerLink="/buscar-producto"
-               mat-list-item
-               (click)="sidenav.toggle()">
+
+            <a routerLink="/buscar-producto" mat-list-item (click)="sidenav.toggle()">
                 <mat-icon mat-list-icon>search</mat-icon>
                 <span>Consultar estado</span>
             </a>
 
-            <a routerLink="/producto"
-               mat-list-item
-               (click)="sidenav.toggle()">
+            <a routerLink="/producto" mat-list-item (click)="sidenav.toggle()">
                 <mat-icon mat-list-icon>add</mat-icon>
                 <span>Producto</span>
             </a>
-            <a routerLink="/sugerencia"
-               mat-list-item
-               (click)="sidenav.toggle()">
+            <a routerLink="/sugerencia" mat-list-item (click)="sidenav.toggle()">
                 <mat-icon mat-list-icon>add</mat-icon>
                 <span>Sugerencia</span>
             </a>
+            <a routerLink="/ventas" mat-list-item (click)="sidenav.toggle()">
+                <mat-icon mat-list-icon>bar_chart</mat-icon>
+                <span>Reportes Inventario</span>
+            </a>
+            <a routerLink="/ventas" mat-list-item (click)="sidenav.toggle()">
+                <mat-icon mat-list-icon>insert_chart</mat-icon>
+                <span>Reportes Post-Venta</span>
+            </a>
+            <a routerLink="/ventas" mat-list-item (click)="sidenav.toggle()">
+                <mat-icon mat-list-icon>insert_chart_outlined</mat-icon>
+                <span>Reportes Proveedores</span>
+            </a>
+            <a routerLink="/ventas" mat-list-item (click)="sidenav.toggle()">
+                <mat-icon mat-list-icon>show_chart</mat-icon>
+                <span>Reportes Ventas</span>
+            </a>
 
         </mat-nav-list>
-        
+
     </mat-sidenav>
 
     <mat-toolbar>
-        <button mat-icon-button
-                (click)="sidenav.toggle()">
+        <button mat-icon-button (click)="sidenav.toggle()">
             <mat-icon>menu</mat-icon>
         </button>
 
         <span class="spacer"></span>
 
-       
+
     </mat-toolbar>
 
 
