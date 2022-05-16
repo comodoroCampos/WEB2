@@ -2,7 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { URL_SERVICIOS } from '../constantes/constantes';
-import { Producto, Productos, Respuesta, Ventas } from '../interfaces/interface';
+import {  Productos,  Ventas } from '../interfaces/interface';
+import * as moment from 'moment';
+
 
 @Injectable({
   providedIn: 'root'
@@ -16,8 +18,11 @@ export class ServService {
     return this.http.get<Productos>(url);
   }
 
-  buscarVentaPorFecha(desde: Date,hasta:Date,usuario:string): Observable<Ventas> {
-    const url = `${URL_SERVICIOS}/api/venta/${desde}/${hasta}/${usuario}`;
+  buscarVentaPorFecha(fecha_desde: Date,fecha_hasta:Date,usuario:string): Observable<Ventas> {
+    const desde=(moment(fecha_desde)).format('YYYY-MM-DDTHH:mm:ss')
+    const hasta=(moment(fecha_hasta)).format('YYYY-MM-DDTHH:mm:ss')
+   
+    const url = `${URL_SERVICIOS}/api/ventas/${desde}/${hasta}/${usuario}`;
     return this.http.get<Ventas>(url);
   }
 }

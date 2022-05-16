@@ -4,6 +4,7 @@ import { Venta } from 'src/app/interfaces/interface';
 import Swal from 'sweetalert2';
 import { ServService } from '../serv.service';
 
+
 @Component({
   selector: 'app-ventas',
   templateUrl: './ventas.component.html',
@@ -36,23 +37,18 @@ export class VentasComponent implements OnInit {
       this.debouncer.next(this.fecha_desde);
       this.disable_hasta = false;
     }
-    console.log(this.fecha_desde);
-    console.log(this.fecha_hasta);
+
   }
+
+
 
   buscar() {
-    console.log(this.fecha_desde);
-    console.log(this.fecha_hasta);
-    console.log(this.empleado);
-  }
-
-  buscarVentas() {
     this.cargando = true;
     this.ventas = [];
-    if (!this.fecha_desde&&!this.fecha_hasta&&!this.empleado) {
+    if (!this.fecha_desde||this.fecha_hasta||this.empleado=='') {
       Swal.fire({
         icon:  'error',
-        title: 'Selecciona una fecha Weon',
+        title: 'Selecciona una fecha y usuario Aweonao',
         text: 'campos obligatorios',
       });
       return;
