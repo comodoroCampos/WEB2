@@ -17,10 +17,10 @@
             <mat-form-field class="col-md-6">
                 <mat-label>Fecha hasta</mat-label>
                 <input matInput [matDatepicker]="hasta" name="fecha_hasta" [(ngModel)]="fecha_hasta"
-                    (input)="selecionaFecha()"  required>
+                    (input)="selecionaFecha()"  [disabled]="disable_hasta"  required>
                 <mat-hint>MM/DD/YYYY</mat-hint>
                 <mat-datepicker-toggle matSuffix [for]="hasta"></mat-datepicker-toggle>
-                <mat-datepicker #hasta disabled="false"></mat-datepicker>
+                <mat-datepicker #hasta [disabled]="disable_hasta"></mat-datepicker>
             </mat-form-field>
 
             <mat-form-field class="col-md-3">
