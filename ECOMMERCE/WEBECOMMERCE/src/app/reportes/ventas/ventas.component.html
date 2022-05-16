@@ -5,22 +5,26 @@
     <div class="container">
         <div class="row">
 
-            <mat-form-field class="col-md-3">
-                <input matInput [matDatepicker]="picker" placeholder="Fecha Desde">
+            <mat-form-field class="col-md-6">
+                <mat-label>Fecha hasta</mat-label>
+                <input matInput [matDatepicker]="desde" name="fecha_desde" [(ngModel)]="fecha_desde" [max]="fecha_hasta"
+                    (input)="selecionaFecha()"  required>
                 <mat-hint>MM/DD/YYYY</mat-hint>
-                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
+                <mat-datepicker-toggle matSuffix [for]="desde"></mat-datepicker-toggle>
+                <mat-datepicker #desde disabled="false"></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field class="col-md-6">
+                <mat-label>Fecha hasta</mat-label>
+                <input matInput [matDatepicker]="hasta" name="fecha_hasta" [(ngModel)]="fecha_hasta"
+                    (input)="selecionaFecha()"  required>
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matSuffix [for]="hasta"></mat-datepicker-toggle>
+                <mat-datepicker #hasta disabled="false"></mat-datepicker>
             </mat-form-field>
 
             <mat-form-field class="col-md-3">
-                <input matInput [matDatepicker]="picker" placeholder="Fecha Hasta">
-                <mat-hint>MM/DD/YYYY</mat-hint>
-                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
-            </mat-form-field>
-
-            <mat-form-field class="col-md-3">
-                <input matInput type="text" name="idVendedor"
+                <input matInput type="text" name="idVendedor"  [(ngModel)]="empleado"
                     placeholder="ID vendedor"/>
             </mat-form-field>
 
