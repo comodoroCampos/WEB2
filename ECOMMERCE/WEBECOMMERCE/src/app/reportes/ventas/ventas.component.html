@@ -5,7 +5,7 @@
     <div class="container">
         <div class="row">
 
-            <mat-form-field class="col-md-6">
+            <mat-form-field class="col-md-4">
                 <mat-label>Fecha hasta</mat-label>
                 <input matInput [matDatepicker]="desde" name="fecha_desde" [(ngModel)]="fecha_desde" [max]="fecha_hasta"
                     (input)="selecionaFecha()"  required>
@@ -14,7 +14,7 @@
                 <mat-datepicker #desde disabled="false"></mat-datepicker>
             </mat-form-field>
 
-            <mat-form-field class="col-md-6">
+            <mat-form-field class="col-md-4">
                 <mat-label>Fecha hasta</mat-label>
                 <input matInput [matDatepicker]="hasta" name="fecha_hasta" [(ngModel)]="fecha_hasta"
                     (input)="selecionaFecha()"  [disabled]="disable_hasta"  required>
@@ -23,7 +23,7 @@
                 <mat-datepicker #hasta [disabled]="disable_hasta"></mat-datepicker>
             </mat-form-field>
 
-            <mat-form-field class="col-md-3">
+            <mat-form-field class="col-md-4">
                 <input matInput type="text" name="idVendedor"  [(ngModel)]="empleado"
                     placeholder="ID vendedor"/>
             </mat-form-field>
