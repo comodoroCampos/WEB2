@@ -3,7 +3,7 @@ export interface Productos {
 }
 
 export interface Producto {
-    _id?:        string;
+    _id?:         string;
     nombre:      string;
     precio:      number;
     descripcion: string;
@@ -11,9 +11,13 @@ export interface Producto {
     imagen:      string[];
     codigo:      string;
 }
+export interface Respuesta {
+    ok: boolean;
+    mensaje: string;
+}
 
 export interface Ventas {
-    ventas: Venta[];
+    venta: Venta[];
 }
 
 export interface Venta {
@@ -23,9 +27,6 @@ export interface Venta {
     fecha:    Date;
     tipo:     string;
     usuario:  string;
+
 }
 
-export interface Respuesta {
-    ok: boolean;
-    mensaje: string;
-}

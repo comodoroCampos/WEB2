@@ -13,23 +13,21 @@ export class VentasComponent implements OnInit {
   fecha_hasta?: Date;
   disable_hasta: boolean = true;
   empleado: string = '';
-
+  cargando: boolean = false;
+  ventas: Venta[] = [];
 
   @Output() onDebounce: EventEmitter<Date> = new EventEmitter();
   @Output() onEnter: EventEmitter<Date> = new EventEmitter();
   debouncer: Subject<Date> = new Subject();
   constructor(private ventaService: ServService) {
-    this.fecha_desde = new Date;
+    this.fecha_desde = new Date();
   }
 
   ngOnInit(): void {
-
     this.debouncer.pipe(debounceTime(300)).subscribe((valor) => {
       this.onDebounce.emit(valor);
     });
   }
-
-
 
   selecionaFecha() {
     this.disable_hasta = true;
@@ -47,18 +45,19 @@ export class VentasComponent implements OnInit {
     console.log(this.empleado);
   }
 
-  cargando: boolean = false;
-  ventas: Venta[] = []
-
   buscarVentas() {
     this.cargando = true;
     this.ventas = [];
-    this.ventaService.buscarVentaPorFecha(this.fecha).subscribe(
+    if (this.fecha_desde) {
+      return;
+    }
+    this.ventaService.buscarVentaPorFecha(this.fecha_desde!).subscribe(
       (ven) => {
-        this.ventas = ven.ventas;
+        this.ventas = ven.venta;
         this.cargando = false;
-
-      }, (err) => {
+        console.log(this.ventas);
+      },
+      (err) => {
         this.cargando = false;
         this.ventas = [];
       }
