@@ -16,8 +16,8 @@ export class ServService {
     return this.http.get<Productos>(url);
   }
 
-  buscarVentaPorFecha(fecha: Date): Observable<Ventas> {
-    const url = `${URL_SERVICIOS}/api/venta/${fecha}`;
+  buscarVentaPorFecha(desde: Date,hasta:Date,usuario:string): Observable<Ventas> {
+    const url = `${URL_SERVICIOS}/api/venta/${desde}/${hasta}/${usuario}`;
     return this.http.get<Ventas>(url);
   }
 }

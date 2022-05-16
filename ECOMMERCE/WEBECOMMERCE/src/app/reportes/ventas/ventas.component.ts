@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { debounceTime, Subject } from 'rxjs';
 import { Venta } from 'src/app/interfaces/interface';
+import Swal from 'sweetalert2';
 import { ServService } from '../serv.service';
 
 @Component({
@@ -48,10 +49,15 @@ export class VentasComponent implements OnInit {
   buscarVentas() {
     this.cargando = true;
     this.ventas = [];
-    if (this.fecha_desde) {
+    if (!this.fecha_desde&&!this.fecha_hasta&&!this.empleado) {
+      Swal.fire({
+        icon:  'error',
+        title: 'Selecciona una fecha Weon',
+        text: 'campos obligatorios',
+      });
       return;
     }
-    this.ventaService.buscarVentaPorFecha(this.fecha_desde!).subscribe(
+    this.ventaService.buscarVentaPorFecha(this.fecha_desde!,this.fecha_hasta!,this.empleado).subscribe(
       (ven) => {
         this.ventas = ven.venta;
         this.cargando = false;
