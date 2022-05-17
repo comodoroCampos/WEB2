@@ -48,8 +48,8 @@ export class VentasComponent implements OnInit {
     if (!this.fecha_desde||!this.fecha_hasta||this.empleado=='') {
       Swal.fire({
         icon:  'error',
-        title: 'Selecciona una fecha y usuario Aweonao',
-        text: 'campos obligatorios',
+        title: 'Selecciona una fecha y usuario',
+        text: 'Campos obligatorios',
       });
       return;
     }
