@@ -29,4 +29,11 @@ export interface Venta {
     usuario:  string;
 
 }
+export interface ReporteVentas{
+    cantidad: number;
+    producto: string;
+    fecha:    string;
+    tipo:     string;
+    usuario:  string;
+}
 
