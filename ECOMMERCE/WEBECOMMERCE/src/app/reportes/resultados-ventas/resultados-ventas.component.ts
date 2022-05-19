@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Venta } from 'src/app/interfaces/interface';
 import * as FileSaver from 'file-saver';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-resultados-ventas',
@@ -26,7 +27,10 @@ export class ResultadosVentasComponent implements OnInit {
     console.log(venta);
   }
 
+  formatoFecha:string = (moment(new Date())).format('YYYY-MM-DD HH:mm');
+
   exportExcel() {
+    console.log(this.formatoFecha);
     import("xlsx").then(xlsx => {
       const worksheet = xlsx.utils.json_to_sheet(this.ventas);
       const workbook = { Sheets: { 'data': worksheet }, SheetNames: ['data'] };
