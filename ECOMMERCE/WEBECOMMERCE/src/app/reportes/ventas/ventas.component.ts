@@ -42,8 +42,6 @@ export class VentasComponent implements OnInit {
 
   }
 
-
-
   buscar() {
     console.log(this.empleado);
     this.ventas = [];

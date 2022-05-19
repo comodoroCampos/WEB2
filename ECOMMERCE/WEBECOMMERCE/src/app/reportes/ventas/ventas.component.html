@@ -16,7 +16,7 @@
 
             <mat-form-field class="col-md-4">
                 <mat-label>Fecha hasta</mat-label>
-                <input matInput [matDatepicker]="hasta" name="fecha_hasta" [(ngModel)]="fecha_hasta" [min]="fecha_desde"
+                <input matInput [matDatepicker]="hasta" name="fecha_hasta" [(ngModel)]="fecha_hasta" [min]="fecha_desde" [max] = "diaActual"
                     (input)="selecionaFecha()" (dateChange)="selecionaFecha()"  [disabled]="disable_hasta">
                 <mat-hint>MM/DD/YYYY</mat-hint>
                 <mat-datepicker-toggle matSuffix [for]="hasta"></mat-datepicker-toggle>
