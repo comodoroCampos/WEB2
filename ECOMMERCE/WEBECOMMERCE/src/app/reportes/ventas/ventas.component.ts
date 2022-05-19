@@ -17,12 +17,14 @@ export class VentasComponent implements OnInit {
   empleado: string = '';
   cargando: boolean = false;
   ventas: Venta[] = [];
+  diaActual : Date = new Date();
 
   @Output() onDebounce: EventEmitter<Date> = new EventEmitter();
   @Output() onEnter: EventEmitter<Date> = new EventEmitter();
   debouncer: Subject<Date> = new Subject();
   constructor(private ventaService: ServService) {
     this.fecha_desde = new Date();
+    this.diaActual = new Date();
   }
 
   ngOnInit(): void {
@@ -45,14 +47,6 @@ export class VentasComponent implements OnInit {
   buscar() {
     console.log(this.empleado);
     this.ventas = [];
-    if (!this.fecha_desde||!this.fecha_hasta||this.empleado=='') {
-      Swal.fire({
-        icon:  'error',
-        title: 'Selecciona una fecha y usuario',
-        text: 'Campos obligatorios',
-      });
-      return;
-    }
     this.cargando = true;
     this.ventaService.buscarVentaPorFecha(this.fecha_desde!,this.fecha_hasta!,this.empleado).subscribe(
       (ven) => {

@@ -22,7 +22,20 @@ export class ServService {
     const desde=(moment(fecha_desde)).format('YYYY-MM-DDTHH:mm:ss')
     const hasta=(moment(fecha_hasta)).format('YYYY-MM-DDTHH:mm:ss')
    
-    const url = `${URL_SERVICIOS}/api/ventas/${desde}/${hasta}/${usuario}`;
+    let url = `${URL_SERVICIOS}/api/ventas/todos/`;
+
+    if (fecha_desde && fecha_hasta && usuario != ''){
+      url = `${URL_SERVICIOS}/api/ventas/fecha-usuario/${desde}/${hasta}/${usuario}`;
+    }
+    
+    if (fecha_desde && fecha_hasta && usuario == ''){
+      url = `${URL_SERVICIOS}/api/ventas/fechas/${desde}/${hasta}`;
+    }
+    
+    if (!fecha_desde && !fecha_hasta && usuario != ''){
+      url = `${URL_SERVICIOS}/api/ventas/usuario/${usuario}`;
+    }
+
     return this.http.get<Ventas>(url);
   }
 }
