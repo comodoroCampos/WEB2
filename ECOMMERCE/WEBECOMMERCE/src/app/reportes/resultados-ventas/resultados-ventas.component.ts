@@ -17,8 +17,7 @@ export class ResultadosVentasComponent implements OnInit {
     'producto',
     'fecha',
     'tipo',
-    'usuario',
-    'anular'
+    'usuario'
   ];
   constructor() { }
 
