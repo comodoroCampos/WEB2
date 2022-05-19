@@ -23,7 +23,6 @@ export class VentasComponent implements OnInit {
   @Output() onEnter: EventEmitter<Date> = new EventEmitter();
   debouncer: Subject<Date> = new Subject();
   constructor(private ventaService: ServService) {
-    this.fecha_desde = new Date();
     this.diaActual = new Date();
   }
 
