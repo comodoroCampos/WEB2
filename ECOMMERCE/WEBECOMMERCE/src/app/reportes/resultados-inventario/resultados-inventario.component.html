@@ -1,0 +1,50 @@
+<form>
+    <h2 style="color: brown; text-align: center;">Favor ingrese sus filtros de busqueda para obtener su informe de
+        Productos</h2>
+
+    <div class="container">
+        <div class="row">
+
+            <mat-form-field class="col-md-3">
+                <input matInput type="text" name="idNombre" [(ngModel)]="prod"
+                    placeholder="Nombre"/>
+            </mat-form-field>
+
+            <mat-form-field class="col-md-3">
+                <input matInput type="text" name="idDesc" [(ngModel)]="desc"
+                    placeholder="Descripcion"/>
+            </mat-form-field>
+
+            <mat-form-field class="col-md-3">
+                <input matInput type="number" name="idPrecioIni" [(ngModel)]="precioIni"
+                    placeholder="Premio Minimo"/>
+            </mat-form-field>
+
+            <mat-form-field class="col-md-3">
+                <input matInput type="number" name="idPrecioFin" [(ngModel)]="precioFin"
+                    placeholder="Premio Maximo"/>
+            </mat-form-field>
+
+        </div>
+    </div>
+
+    <div class="container" style="margin-top: 20px;">
+        <div class="row">
+            <button mat-raised-button color="primary" class="col-md-12" (click)="buscarProductos()">
+                Buscar
+                <mat-icon>search</mat-icon>
+            </button>
+        </div>
+    </div>
+    
+
+</form>
+<p-divider></p-divider>
+<div class="container" >
+    <div class="row" >
+    <mat-spinner class="col-md-12" *ngIf="(cargando)" ></mat-spinner>
+    <app-inventario class="col-md-12" [productoDuoc]="productos" [productoDuocAux]="productos" *ngIf="(productos.length>0)"></app-inventario>
+
+</div>
+</div>
+

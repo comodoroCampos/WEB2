@@ -11,6 +11,29 @@ export interface Producto {
     imagen:      string[];
     codigo:      string;
 }
+
+export interface ProductosDuoc {
+    productos: ProductoDuoc[];
+}
+
+export interface ProductoDuoc {
+    id:          number;
+    name:        string;
+    slug:        string;
+    description: string;
+    price:       string;
+    created_at:  Date;
+    updated_at:  Date;
+    quantity:    number;
+}
+
+export interface ReporteProductosDuoc{
+    name:        string;
+    price:       string;
+    quantity:    number;
+    description: string;    
+}
+
 export interface Respuesta {
     ok: boolean;
     mensaje: string;
