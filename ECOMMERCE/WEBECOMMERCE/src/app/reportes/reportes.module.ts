@@ -7,6 +7,7 @@ import { MaterialModule } from '../material/material.module';
 import { PrimengModule } from '../primeng/primeng.module';
 import { ResultadosVentasComponent } from './resultados-ventas/resultados-ventas.component';
 import { ResultadosInventarioComponent } from './resultados-inventario/resultados-inventario.component';
+import { ResultadosSaleComponent } from './resultados_sale/resultados-sale.component';
 
 
 
@@ -16,7 +17,8 @@ import { ResultadosInventarioComponent } from './resultados-inventario/resultado
     InventarioComponent,
     DespachoComponent,
     ResultadosVentasComponent,
-    ResultadosInventarioComponent
+    ResultadosInventarioComponent,
+    ResultadosSaleComponent
   ],
   imports: [
     CommonModule,
@@ -28,7 +30,8 @@ import { ResultadosInventarioComponent } from './resultados-inventario/resultado
     InventarioComponent,
     DespachoComponent,
     ResultadosVentasComponent,
-    ResultadosInventarioComponent
+    ResultadosInventarioComponent,
+    ResultadosSaleComponent
   ]
 })
 export class ReportesModule { }

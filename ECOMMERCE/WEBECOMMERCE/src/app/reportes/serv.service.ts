@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { URL_SERVICIOS } from '../constantes/constantes';
-import { Productos, Ventas, ProductosDuoc } from '../interfaces/interface';
+import { Productos, Ventas, ProductosDuoc, Sale } from '../interfaces/interface';
 import * as moment from 'moment';
 
 
@@ -42,5 +42,10 @@ export class ServService {
   buscarTodosProductos(): Observable<ProductosDuoc> {
     const url = `${URL_SERVICIOS}/api/mysql/producto/todos`;
     return this.http.get<ProductosDuoc>(url);
+  }
+
+  buscarTodasSales(): Observable<Sale> {
+    const url = `${URL_SERVICIOS}/api/mysql/sale/todos`;
+    return this.http.get<Sale>(url);
   }
 }

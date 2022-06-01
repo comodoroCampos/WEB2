@@ -27,11 +27,34 @@ export interface ProductoDuoc {
     quantity:    number;
 }
 
+export interface Sales {
+    sales: Sale[];
+}
+
+export interface Sale {
+    id:          number;
+    amount:      number;
+    status:      string;
+    product_id:  number;
+    user_id:     number;
+    created_at:  Date;
+    updated_at:  Date;
+}
+
 export interface ReporteProductosDuoc{
     name:        string;
     price:       string;
     quantity:    number;
     description: string;    
+}
+
+export interface ReporteSales{
+    amount:      number;
+    status:      string;
+    product_id:  number;
+    user_id:     number;
+    created_at:  Date;
+    updated_at:  Date;  
 }
 
 export interface Respuesta {
