@@ -1,6 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Producto, ProductoDuoc, ReporteProductosDuoc } from '../../interfaces/interface';
 import * as FileSaver from 'file-saver';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-inventario',
@@ -12,7 +13,10 @@ export class InventarioComponent implements OnInit {
 
   @Input() productoDuoc: ProductoDuoc[] = [];
   @Input() productoDuocAux: ProductoDuoc[] = [];
+  @Output() onEnter: EventEmitter<string> = new EventEmitter();
+  debouncer: Subject<string> = new Subject();
 
+  termino: string = '';
   reporteProductosDuoc: ReporteProductosDuoc[] = [];
 
   displayedColumns: string[] = [
@@ -22,7 +26,9 @@ export class InventarioComponent implements OnInit {
     'descripcion'
   ];
 
-  constructor() { }
+  constructor() { 
+    this.termino = '';
+  }
 
   ngOnInit(): void {
   }
@@ -60,5 +66,12 @@ export class InventarioComponent implements OnInit {
       fileName + '_export_' + new Date().getTime() + EXCEL_EXTENSION
     );
   }
-
+  teclaPresionada() {
+    this.debouncer.next(this.termino);
+    this.productoDuoc = this.productoDuocAux;
+    this.productoDuoc = this.productoDuoc.filter((producto) =>
+    producto.name.toLowerCase().includes(this.termino.toLowerCase())
+    );
+    console.log(this.termino);
+  }
 }

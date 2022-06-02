@@ -1,9 +1,15 @@
 <div class="container-xxl">
     <div class="row">
-        <div class="col-md-10">
+        <div class="col-md-8">
+            <mat-form-field class="col-md-12">
+                <mat-label>Buscar</mat-label>
+                <input matInput type="text" name="buscarProducto" [(ngModel)]="termino" (input)="teclaPresionada()"
+                    placeholder="buscar" />
+            </mat-form-field>
         </div>
         <div class="col-md-2">
-            <button type="button" pButton pRipple icon="pi pi-file-excel" (click)="exportExcel()" class="p-button-success mr-2"  pTooltip="XLS" tooltipPosition="bottom"></button>
+            <button type="button" pButton pRipple icon="pi pi-file-excel" (click)="exportExcel()"
+                class="p-button-success mr-2" pTooltip="XLS" tooltipPosition="bottom"></button>
         </div>
     </div>
 

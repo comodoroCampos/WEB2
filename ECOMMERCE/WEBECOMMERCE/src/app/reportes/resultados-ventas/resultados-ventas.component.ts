@@ -1,7 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ReporteVentas, Venta } from 'src/app/interfaces/interface';
 import * as FileSaver from 'file-saver';
 import * as moment from 'moment';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-resultados-ventas',
@@ -12,8 +13,12 @@ export class ResultadosVentasComponent implements OnInit {
   @Input() ventas: Venta[] = [];
   @Input() ventasAux: Venta[] = [];
 
-  reporteVenta: ReporteVentas[] = [];
+  @Output() onEnter: EventEmitter<string> = new EventEmitter();
+  debouncer: Subject<string> = new Subject();
 
+  
+  reporteVenta: ReporteVentas[] = [];
+  termino: string = '';
   displayedColumns: string[] = [
     'cantidad',
     'producto',
@@ -21,7 +26,9 @@ export class ResultadosVentasComponent implements OnInit {
     'tipo',
     'usuario',
   ];
-  constructor() {}
+  constructor() {
+    this.termino = '';
+  }
 
   ngOnInit(): void {}
   eliminar(venta: Venta) {
@@ -64,5 +71,13 @@ export class ResultadosVentasComponent implements OnInit {
       data,
       fileName + '_export_' + new Date().getTime() + EXCEL_EXTENSION
     );
+  }
+  teclaPresionada() {
+    this.debouncer.next(this.termino);
+    this.ventas = this.ventasAux;
+    this.ventas = this.ventas.filter((venta) =>
+      venta.producto.toLowerCase().includes(this.termino.toLowerCase())
+    );
+    console.log(this.termino);
   }
 }
