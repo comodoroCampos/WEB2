@@ -8,6 +8,7 @@ import { PrimengModule } from '../primeng/primeng.module';
 import { ResultadosVentasComponent } from './resultados-ventas/resultados-ventas.component';
 import { ResultadosInventarioComponent } from './resultados-inventario/resultados-inventario.component';
 import { ResultadosSaleComponent } from './resultados_sale/resultados-sale.component';
+import { SaleComponent } from './sale/sale.component';
 
 
 
@@ -18,7 +19,8 @@ import { ResultadosSaleComponent } from './resultados_sale/resultados-sale.compo
     DespachoComponent,
     ResultadosVentasComponent,
     ResultadosInventarioComponent,
-    ResultadosSaleComponent
+    ResultadosSaleComponent,
+    SaleComponent
   ],
   imports: [
     CommonModule,

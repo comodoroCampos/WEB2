@@ -7,7 +7,7 @@
 
             <mat-form-field class="col-md-4">
                 <mat-label>Fecha desde</mat-label>
-                <input matInput [matDatepicker]="desde" name="fecha_desde" [(ngModel)]="fecha_desde" [max] = "diaActual"
+                <input matInput [matDatepicker]="desde" name="fecha_desde" [(ngModel)]="fecha_desde" [max]="diaActual"
                     (input)="selecionaFecha()" (dateChange)="selecionaFecha()">
                 <mat-hint>MM/DD/YYYY</mat-hint>
                 <mat-datepicker-toggle matSuffix [for]="desde"></mat-datepicker-toggle>
@@ -16,36 +16,32 @@
 
             <mat-form-field class="col-md-4">
                 <mat-label>Fecha hasta</mat-label>
-                <input matInput [matDatepicker]="hasta" name="fecha_hasta" [(ngModel)]="fecha_hasta" [min]="fecha_desde" [max] = "diaActual"
-                    (input)="selecionaFecha()" (dateChange)="selecionaFecha()"  [disabled]="disable_hasta">
+                <input matInput [matDatepicker]="hasta" name="fecha_hasta" [(ngModel)]="fecha_hasta" [min]="fecha_desde"
+                    [max]="diaActual" (input)="selecionaFecha()" (dateChange)="selecionaFecha()"
+                    [disabled]="disable_hasta">
                 <mat-hint>MM/DD/YYYY</mat-hint>
                 <mat-datepicker-toggle matSuffix [for]="hasta"></mat-datepicker-toggle>
-                <mat-datepicker #hasta [disabled]="disable_hasta" ></mat-datepicker>
+                <mat-datepicker #hasta [disabled]="disable_hasta"></mat-datepicker>
             </mat-form-field>
 
             <mat-form-field class="col-md-4">
-                <input matInput type="text" name="usuario" [(ngModel)]="user"
-                    placeholder="Nombre"/>
+                <input matInput type="text" name="usuario" [(ngModel)]="user" placeholder="Nombre" />
             </mat-form-field>
 
             <mat-form-field class="col-md-2">
-                <input matInput type="monto" name="monto" [(ngModel)]="monto"
-                    placeholder="Monto Minimo"/>
+                <input matInput type="monto" name="monto" [(ngModel)]="monto" placeholder="Monto Minimo" />
             </mat-form-field>
 
             <mat-form-field class="col-md-2">
-                <input matInput type="monto" name="monto" [(ngModel)]="monto"
-                    placeholder="Monto Maximo"/>
+                <input matInput type="monto" name="monto" [(ngModel)]="monto" placeholder="Monto Maximo" />
             </mat-form-field>
 
             <mat-form-field class="col-md-4">
-                <input matInput type="text" name="producto" [(ngModel)]="prod"
-                    placeholder="Producto"/>
+                <input matInput type="text" name="producto" [(ngModel)]="prod" placeholder="Producto" />
             </mat-form-field>
 
             <mat-form-field class="col-md-4">
-                <input matInput type="number" name="estado" [(ngModel)]="estado"
-                    placeholder="Estado"/>
+                <input matInput type="number" name="estado" [(ngModel)]="estado" placeholder="Estado" />
             </mat-form-field>
 
         </div>
@@ -59,15 +55,12 @@
             </button>
         </div>
     </div>
-    
-
 </form>
 <p-divider></p-divider>
-<div class="container" >
-    <div class="row" >
-    <mat-spinner class="col-md-12" *ngIf="(cargando)" ></mat-spinner>
-    <app-sales class="col-md-12" [sale]="sales" [saleAux]="sales" *ngIf="(sales.length>0)"></app-inventario>
-
+<div class="container">
+    <div class="row">
+        <mat-spinner class="col-md-12" *ngIf="(cargando)"></mat-spinner>
+        <app-sales class="col-md-12" [sale]="sales" [saleAux]="sales" *ngIf="(sales.length>0)">
+        </app-sales>
+    </div>
 </div>
-</div>
-
