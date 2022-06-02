@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ReporteSales, Sale } from 'src/app/interfaces/interface';
 import * as FileSaver from 'file-saver';
+import { VentaCompleta } from '../../interfaces/interface';
 
 @Component({
   selector: 'app-sale',
@@ -9,8 +10,8 @@ import * as FileSaver from 'file-saver';
 })
 export class SaleComponent implements OnInit {
 
-  @Input() sale: Sale[] = [];
-  @Input() saleAux: Sale[] = [];
+  @Input() sale: VentaCompleta[] = [];
+  @Input() saleAux: VentaCompleta[] = [];
 
   reporteSales: ReporteSales[] = [];
 
@@ -29,11 +30,14 @@ export class SaleComponent implements OnInit {
   exportExcel() {
     this.reporteSales = [];
     for (let sale of this.sale) {
+
       this.reporteSales.push({
-        product_id: sale.product_id,
-        user_id: sale.user_id,
         amount: sale.amount,
-        status: sale.status
+        status: sale.status,
+        product_id: sale.producto.name,
+        user_id: sale.user.name,
+        created_at: sale.created_at,
+        updated_at: sale.updated_at
       });
     }
     import('xlsx').then((xlsx) => {

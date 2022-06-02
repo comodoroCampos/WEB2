@@ -5,6 +5,7 @@ import { InputVentaComponent } from './producto/input-venta/input-venta.componen
 import { BuscarComponent } from './producto/buscar/buscar.component';
 import { VentasComponent } from './reportes/ventas/ventas.component';
 import { ResultadosInventarioComponent } from './reportes/resultados-inventario/resultados-inventario.component';
+import { ResultadosSaleComponent } from './reportes/resultados_sale/resultados-sale.component';
 
 const routes: Routes = [
   {
@@ -27,6 +28,10 @@ const routes: Routes = [
 {
   path: 'productos',
   component: ResultadosInventarioComponent
+},
+{
+  path: 'sales',
+  component: ResultadosSaleComponent
 },
 {
     path: '**',

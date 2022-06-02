@@ -28,20 +28,12 @@
                 <input matInput type="text" name="usuario" [(ngModel)]="user" placeholder="Nombre" />
             </mat-form-field>
 
-            <mat-form-field class="col-md-2">
-                <input matInput type="monto" name="monto" [(ngModel)]="monto" placeholder="Monto Minimo" />
-            </mat-form-field>
-
-            <mat-form-field class="col-md-2">
-                <input matInput type="monto" name="monto" [(ngModel)]="monto" placeholder="Monto Maximo" />
-            </mat-form-field>
-
             <mat-form-field class="col-md-4">
                 <input matInput type="text" name="producto" [(ngModel)]="prod" placeholder="Producto" />
             </mat-form-field>
 
             <mat-form-field class="col-md-4">
-                <input matInput type="number" name="estado" [(ngModel)]="estado" placeholder="Estado" />
+                <input matInput type="text" name="estado" [(ngModel)]="estado" placeholder="Estado" />
             </mat-form-field>
 
         </div>
@@ -60,7 +52,7 @@
 <div class="container">
     <div class="row">
         <mat-spinner class="col-md-12" *ngIf="(cargando)"></mat-spinner>
-        <app-sales class="col-md-12" [sale]="sales" [saleAux]="sales" *ngIf="(sales.length>0)">
-        </app-sales>
+        <app-sale class="col-md-12" [sale]="sales" [saleAux]="sales" *ngIf="(sales.length>0)">
+        </app-sale>
     </div>
 </div>

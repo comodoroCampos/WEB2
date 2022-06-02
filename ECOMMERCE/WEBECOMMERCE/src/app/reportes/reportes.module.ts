@@ -33,7 +33,8 @@ import { SaleComponent } from './sale/sale.component';
     DespachoComponent,
     ResultadosVentasComponent,
     ResultadosInventarioComponent,
-    ResultadosSaleComponent
+    ResultadosSaleComponent,
+    SaleComponent
   ]
 })
 export class ReportesModule { }

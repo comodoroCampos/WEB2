@@ -49,10 +49,10 @@ export interface ReporteProductosDuoc{
 }
 
 export interface ReporteSales{
-    amount:      number;
+    amount:      string;
     status:      string;
-    product_id:  number;
-    user_id:     number;
+    product_id:  string;
+    user_id:     string;
     created_at:  Date;
     updated_at:  Date;  
 }
@@ -82,4 +82,45 @@ export interface ReporteVentas{
     tipo:     string;
     usuario:  string;
 }
+
+
+export interface VentasCompletas {
+    sales: VentaCompleta[];
+}
+
+export interface VentaCompleta {
+    id:         number;
+    amount:     string;
+    status:     string;
+    producto:   ProductoVenta;
+    user:       User;
+    created_at: Date;
+    updated_at: Date;
+}
+
+export interface ProductoVenta {
+    id:          number;
+    name:        string;
+    slug:        string;
+    description: string;
+    price:       string;
+    created_at:  Date;
+    updated_at:  Date;
+    quantity:    number;
+}
+
+
+
+export interface User {
+    id:                number;
+    name:              string;
+    email:             string;
+    email_verified_at?: Date;
+    password:          string;
+    remember_token:    string;
+    created_at:        Date;
+    updated_at:        Date;
+}
+
+
 
