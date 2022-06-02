@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Producto, ProductoDuoc, ReporteProductosDuoc } from '../../interfaces/interface';
+import { Producto, ProductoDuoc, ProductoInventario, ReporteProductosDuoc } from '../../interfaces/interface';
 import * as FileSaver from 'file-saver';
 import { Subject } from 'rxjs';
 
@@ -11,8 +11,8 @@ import { Subject } from 'rxjs';
 
 export class InventarioComponent implements OnInit {
 
-  @Input() productoDuoc: ProductoDuoc[] = [];
-  @Input() productoDuocAux: ProductoDuoc[] = [];
+  @Input() productoDuoc: ProductoInventario[] = [];
+  @Input() productoDuocAux: ProductoInventario[] = [];
   @Output() onEnter: EventEmitter<string> = new EventEmitter();
   debouncer: Subject<string> = new Subject();
 
@@ -37,10 +37,10 @@ export class InventarioComponent implements OnInit {
     this.reporteProductosDuoc = [];
     for (let producto of this.productoDuoc) {
       this.reporteProductosDuoc.push({
-        name: producto.name,
-        price: producto.price,
-        description: producto.description,
-        quantity: producto.quantity
+        name: producto.nombre,
+        price: producto.precio,
+        description: producto.descripcion,
+        quantity: producto.stock
       });
     }
     import('xlsx').then((xlsx) => {
@@ -70,7 +70,7 @@ export class InventarioComponent implements OnInit {
     this.debouncer.next(this.termino);
     this.productoDuoc = this.productoDuocAux;
     this.productoDuoc = this.productoDuoc.filter((producto) =>
-    producto.name.toLowerCase().includes(this.termino.toLowerCase())
+    producto.nombre.toLowerCase().includes(this.termino.toLowerCase())
     );
     console.log(this.termino);
   }

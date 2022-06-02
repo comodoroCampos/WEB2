@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductoDuoc } from '../../interfaces/interface';
+import { ProductoDuoc, ProductoInventario } from '../../interfaces/interface';
 import { ServService } from '../serv.service';
 
 @Component({
@@ -15,7 +15,7 @@ export class ResultadosInventarioComponent implements OnInit {
   precioFin?: number;
   cargando: boolean = false;
 
-  productos: ProductoDuoc[] = [];
+  productos: ProductoInventario[] = [];
 
   constructor(private ser: ServService) {
     this.cargando = false;
@@ -26,7 +26,7 @@ export class ResultadosInventarioComponent implements OnInit {
   }
 
   buscarProductos() {
-    this.ser.buscarTodosProductos().subscribe(
+    this.ser.buscarInventario(this.prod, this.desc, this.precioIni, this.precioFin).subscribe(
       (prodd) => {
         this.productos = prodd.productos;
         this.cargando = false;

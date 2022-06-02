@@ -96,6 +96,15 @@ export interface VentaCompleta {
     estatus:        string;
     fecha_creacion: Date;
 }
+export interface Inventario {
+    productos: ProductoInventario[];
+}
 
+export interface ProductoInventario {
+    nombre:      string;
+    descripcion: string;
+    precio:      string;
+    stock:       number;
+}
 
 

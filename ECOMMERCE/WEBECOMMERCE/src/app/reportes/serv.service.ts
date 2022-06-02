@@ -9,6 +9,7 @@ import {
   Sale,
   Sales,
   VentasCompletas,
+  Inventario,
 } from '../interfaces/interface';
 import * as moment from 'moment';
 
@@ -51,6 +52,24 @@ export class ServService {
   buscarTodosProductos(): Observable<ProductosDuoc> {
     const url = `${URL_SERVICIOS}/api/mysql/producto/todos`;
     return this.http.get<ProductosDuoc>(url);
+  }
+
+
+  buscarInventario(nombre?:string,descripcion?:string,precioMin?:number,precioMax?:number): Observable<Inventario> {
+  let url = `${URL_SERVICIOS}/api/mysql/producto?`;
+    if(nombre!=''){
+      url += `nombre=${nombre}&`;
+    }
+    if(descripcion!=''){
+      url += `descripcion=${descripcion}&`;
+    }
+    if(precioMin){
+      url += `precioMin=${precioMin}&`;
+    }
+    if(precioMax){
+      url += `precioMax=${precioMax}`;
+    }
+    return this.http.get<Inventario>(url);
   }
 
   buscarTodasSales(

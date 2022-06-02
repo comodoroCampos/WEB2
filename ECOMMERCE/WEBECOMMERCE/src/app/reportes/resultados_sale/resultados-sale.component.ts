@@ -52,6 +52,7 @@ export class ResultadosSaleComponent implements OnInit {
     this.ser.buscarTodasSales(this.fecha_desde, this.fecha_hasta, this.user, this.prod, this.estado).subscribe(
       (sall) => {
         this.sales = sall.sales;
+        console.log(this.sales);
         this.cargando = false;
       },
       (err) => {

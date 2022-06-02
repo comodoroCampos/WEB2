@@ -19,22 +19,22 @@
 
         <ng-container matColumnDef="nombre">
             <th mat-header-cell *matHeaderCellDef> Nombre </th>
-            <td mat-cell *matCellDef="let productoDuoc"> {{productoDuoc.name}} </td>
+            <td mat-cell *matCellDef="let productoDuoc"> {{productoDuoc.nombre}} </td>
         </ng-container>
 
         <ng-container matColumnDef="precio">
             <th mat-header-cell *matHeaderCellDef> Precio </th>
-            <td mat-cell *matCellDef="let productoDuoc"> {{productoDuoc.price}} </td>
+            <td mat-cell *matCellDef="let productoDuoc"> {{productoDuoc.precio}} </td>
         </ng-container>
 
         <ng-container matColumnDef="cantidad">
             <th mat-header-cell *matHeaderCellDef> Cantidad </th>
-            <td mat-cell *matCellDef="let productoDuoc"> {{productoDuoc.quantity}} </td>
+            <td mat-cell *matCellDef="let productoDuoc"> {{productoDuoc.stock}} </td>
         </ng-container>
 
         <ng-container matColumnDef="descripcion">
             <th mat-header-cell *matHeaderCellDef> Descripcion </th>
-            <td mat-cell *matCellDef="let productoDuoc"> {{productoDuoc.description}} </td>
+            <td mat-cell *matCellDef="let productoDuoc"> {{productoDuoc.descripcion}} </td>
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
