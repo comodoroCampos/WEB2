@@ -57,7 +57,7 @@ export class ServService {
 
   buscarInventario(nombre?:string,descripcion?:string,precioMin?:number,precioMax?:number): Observable<Inventario> {
   let url = `${URL_SERVICIOS}/api/mysql/producto?`;
-    if(nombre!=''){
+    if(nombre){
       url += `nombre=${nombre}&`;
     }
     if(descripcion!=''){
