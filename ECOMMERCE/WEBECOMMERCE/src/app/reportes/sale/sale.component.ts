@@ -20,7 +20,8 @@ export class SaleComponent implements OnInit {
     'producto',
     'usuario',
     'monto',
-    'estado'
+    'estado',
+    'fecha'
   ];
 
   @Output() onEnter: EventEmitter<string> = new EventEmitter();
