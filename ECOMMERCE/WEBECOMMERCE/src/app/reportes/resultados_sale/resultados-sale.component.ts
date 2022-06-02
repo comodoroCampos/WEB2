@@ -46,6 +46,8 @@ export class ResultadosSaleComponent implements OnInit {
 
   }
   buscarSales() {
+    this.cargando = true;
+    this.sales = [];
     this.ser.buscarTodasSales().subscribe(
       (sall) => {
         this.sales = sall.sales;

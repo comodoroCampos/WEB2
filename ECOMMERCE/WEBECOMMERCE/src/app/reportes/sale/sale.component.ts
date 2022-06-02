@@ -1,7 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ReporteSales, Sale } from 'src/app/interfaces/interface';
 import * as FileSaver from 'file-saver';
 import { VentaCompleta } from '../../interfaces/interface';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-sale',
@@ -22,7 +23,13 @@ export class SaleComponent implements OnInit {
     'estado'
   ];
 
-  constructor() { }
+  @Output() onEnter: EventEmitter<string> = new EventEmitter();
+  debouncer: Subject<string> = new Subject();
+
+  termino: string = '';
+  constructor() {
+    this.termino = '';
+  }
 
   ngOnInit(): void {
   }
@@ -62,6 +69,14 @@ export class SaleComponent implements OnInit {
       data,
       fileName + '_export_' + new Date().getTime() + EXCEL_EXTENSION
     );
+  }
+  teclaPresionada() {
+    this.debouncer.next(this.termino);
+    this.sale = this.saleAux;
+    this.sale = this.sale.filter((sl) =>
+      sl.producto.name.toLowerCase().includes(this.termino.toLowerCase())
+    );
+    console.log(this.termino);
   }
 
 }
