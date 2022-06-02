@@ -14,13 +14,14 @@ export class SaleComponent implements OnInit {
   @Input() sale: VentaCompleta[] = [];
   @Input() saleAux: VentaCompleta[] = [];
 
-  reporteSales: ReporteSales[] = [];
+  
 
   displayedColumns: string[] = [
     'producto',
     'usuario',
     'monto',
-    'estado'
+    'estado',
+    'fecha'
   ];
 
   @Output() onEnter: EventEmitter<string> = new EventEmitter();
@@ -35,20 +36,10 @@ export class SaleComponent implements OnInit {
   }
 
   exportExcel() {
-    this.reporteSales = [];
-    for (let sale of this.sale) {
 
-      this.reporteSales.push({
-        amount: sale.amount,
-        status: sale.status,
-        product_id: sale.producto.name,
-        user_id: sale.user.name,
-        created_at: sale.created_at,
-        updated_at: sale.updated_at
-      });
-    }
+
     import('xlsx').then((xlsx) => {
-      const worksheet = xlsx.utils.json_to_sheet(this.reporteSales);
+      const worksheet = xlsx.utils.json_to_sheet(this.sale);
       const workbook = { Sheets: { data: worksheet }, SheetNames: ['data'] };
       const excelBuffer: any = xlsx.write(workbook, {
         bookType: 'xlsx',
@@ -74,7 +65,7 @@ export class SaleComponent implements OnInit {
     this.debouncer.next(this.termino);
     this.sale = this.saleAux;
     this.sale = this.sale.filter((sl) =>
-      sl.producto.name.toLowerCase().includes(this.termino.toLowerCase())
+      sl.producto.toLowerCase().includes(this.termino.toLowerCase())
     );
     console.log(this.termino);
   }

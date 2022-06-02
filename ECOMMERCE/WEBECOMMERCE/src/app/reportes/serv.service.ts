@@ -2,37 +2,46 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { URL_SERVICIOS } from '../constantes/constantes';
-import { Productos, Ventas, ProductosDuoc, Sale, Sales, VentasCompletas } from '../interfaces/interface';
+import {
+  Productos,
+  Ventas,
+  ProductosDuoc,
+  Sale,
+  Sales,
+  VentasCompletas,
+} from '../interfaces/interface';
 import * as moment from 'moment';
 
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ServService {
-
-  constructor(private http: HttpClient) {  }
+  constructor(private http: HttpClient) {}
 
   buscarVentaPorVendedor(rut: string): Observable<Productos> {
     const url = `${URL_SERVICIOS}/api/producto/${rut}`;
     return this.http.get<Productos>(url);
   }
 
-  buscarVentaPorFecha(fecha_desde: Date,fecha_hasta:Date,usuario:string): Observable<Ventas> {
-    const desde=(moment(fecha_desde)).format('YYYY-MM-DDTHH:mm:ss')
-    const hasta=(moment(fecha_hasta)).format('YYYY-MM-DDTHH:mm:ss')
-   
+  buscarVentaPorFecha(
+    fecha_desde: Date,
+    fecha_hasta: Date,
+    usuario: string
+  ): Observable<Ventas> {
+    const desde = moment(fecha_desde).format('YYYY-MM-DDTHH:mm:ss');
+    const hasta = moment(fecha_hasta).format('YYYY-MM-DDTHH:mm:ss');
+
     let url = `${URL_SERVICIOS}/api/ventas/todos/`;
 
-    if (fecha_desde && fecha_hasta && usuario != ''){
+    if (fecha_desde && fecha_hasta && usuario != '') {
       url = `${URL_SERVICIOS}/api/ventas/fecha-usuario/${desde}/${hasta}/${usuario}`;
     }
-    
-    if (fecha_desde && fecha_hasta && usuario == ''){
+
+    if (fecha_desde && fecha_hasta && usuario == '') {
       url = `${URL_SERVICIOS}/api/ventas/fechas/${desde}/${hasta}`;
     }
-    
-    if (!fecha_desde && !fecha_hasta && usuario != ''){
+
+    if (!fecha_desde && !fecha_hasta && usuario != '') {
       url = `${URL_SERVICIOS}/api/ventas/usuario/${usuario}`;
     }
 
@@ -44,8 +53,29 @@ export class ServService {
     return this.http.get<ProductosDuoc>(url);
   }
 
-  buscarTodasSales(): Observable<VentasCompletas> {
-    const url = `${URL_SERVICIOS}/api/mysql/sale/todos`;
+  buscarTodasSales(
+    desde?: Date,
+    hasta?: Date,
+    usuario?: string,
+    producto?: string,
+    estado?: string
+  ): Observable<VentasCompletas> {
+    let url = `${URL_SERVICIOS}/api/mysql/sale/?`;
+    if (desde && hasta) {
+      const fecha_desde = moment(desde).format('YYYY-MM-DDTHH:mm:ss');
+      const fecha_hasta = moment(hasta).format('YYYY-MM-DDTHH:mm:ss');
+      url += `fecha_desde=${fecha_desde}&fecha_hasta=${fecha_hasta}&`;
+    }
+    if (usuario!='') {
+      url += `usuario=${usuario}&`;
+    }
+    if (producto!='') {
+      url += `producto=${producto}&`;
+    }
+    if (estado!='') {
+      url += `estado=${estado}&`;
+    }
+
     return this.http.get<VentasCompletas>(url);
   }
 }

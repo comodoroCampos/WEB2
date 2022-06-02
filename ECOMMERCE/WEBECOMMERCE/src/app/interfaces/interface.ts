@@ -89,37 +89,12 @@ export interface VentasCompletas {
 }
 
 export interface VentaCompleta {
-    id:         number;
-    amount:     string;
-    status:     string;
-    producto:   ProductoVenta;
-    user:       User;
-    created_at: Date;
-    updated_at: Date;
-}
-
-export interface ProductoVenta {
-    id:          number;
-    name:        string;
-    slug:        string;
-    description: string;
-    price:       string;
-    created_at:  Date;
-    updated_at:  Date;
-    quantity:    number;
-}
-
-
-
-export interface User {
-    id:                number;
-    name:              string;
-    email:             string;
-    email_verified_at?: Date;
-    password:          string;
-    remember_token:    string;
-    created_at:        Date;
-    updated_at:        Date;
+    id:             number;
+    producto:       string;
+    usuario:        string;
+    mount:          string;
+    estatus:        string;
+    fecha_creacion: Date;
 }
 
 
