@@ -10,6 +10,8 @@ import {
   Sales,
   VentasCompletas,
   Inventario,
+  Ticket,
+  Factura,
 } from '../interfaces/interface';
 import * as moment from 'moment';
 
@@ -97,4 +99,48 @@ export class ServService {
 
     return this.http.get<VentasCompletas>(url);
   }
+  buscarfactura(estado?:string,producto?:string,nro_factura?:string, desde?: Date,hasta?: Date,usuario?: string): Observable<Factura> {
+    let url = `${URL_SERVICIOS}/api/mysql/factura?`;
+      if(estado){
+        url += `estado=${estado}&`;
+      }
+      if(producto!=''){
+        url += `producto=${producto}&`;
+      }
+      if(nro_factura){
+        url += `nro_factura=${nro_factura}&`;
+      }
+      if(usuario){
+        url += `usuario=${usuario}`;
+      }
+      if (desde && hasta) {
+        const fecha_desde = moment(desde).format('YYYY-MM-DDTHH:mm:ss');
+        const fecha_hasta = moment(hasta).format('YYYY-MM-DDTHH:mm:ss');
+        url += `fecha_desde=${fecha_desde}&fecha_hasta=${fecha_hasta}&`;
+      }
+      return this.http.get<Factura>(url);
+    }
+  buscarTicket(estado?:string,producto?:string,nro_ticket?:string, desde?: Date,hasta?: Date,usuario?: string): Observable<Ticket> {
+    let url = `${URL_SERVICIOS}/api/mysql/ticket?`;
+      if(estado){
+        url += `estado=${estado}&`;
+      }
+      if(producto!=''){
+        url += `producto=${producto}&`;
+      }
+      if(nro_ticket){
+        url += `nro_ticket=${nro_ticket}&`;
+      }
+      if(usuario){
+        url += `usuario=${usuario}`;
+      }
+      if (desde && hasta) {
+        const fecha_desde = moment(desde).format('YYYY-MM-DDTHH:mm:ss');
+        const fecha_hasta = moment(hasta).format('YYYY-MM-DDTHH:mm:ss');
+        url += `fecha_desde=${fecha_desde}&fecha_hasta=${fecha_hasta}&`;
+      }
+      return this.http.get<Ticket>(url);
+    }
+
+
 }

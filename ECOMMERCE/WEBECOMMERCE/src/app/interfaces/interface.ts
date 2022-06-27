@@ -108,3 +108,28 @@ export interface ProductoInventario {
 }
 
 
+export interface Factura {
+    facturas: FacturaElement[];
+}
+
+export interface FacturaElement {
+    nro_bill:    number;
+    sale_id:     number;
+    bill_amount: string;
+    created_at:  Date;
+    status:      string;
+    name:        string;
+}
+
+export interface Ticket {
+    ticket: TicketElement[];
+}
+
+export interface TicketElement {
+    nro_ticket:    number;
+    sale_id:       number;
+    ticket_amount: string;
+    created_at:    Date;
+    status:        string;
+    name:          string;
+}
