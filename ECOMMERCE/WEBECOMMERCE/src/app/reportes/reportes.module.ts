@@ -38,7 +38,9 @@ import { FacturasResultadoComponent } from './facturas-resultado/facturas-result
     ResultadosVentasComponent,
     ResultadosInventarioComponent,
     ResultadosSaleComponent,
-    SaleComponent
+    SaleComponent,
+    FacturasComponent,
+    FacturasResultadoComponent
   ]
 })
 export class ReportesModule { }

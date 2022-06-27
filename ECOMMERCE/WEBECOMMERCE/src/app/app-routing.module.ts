@@ -6,6 +6,7 @@ import { BuscarComponent } from './producto/buscar/buscar.component';
 import { VentasComponent } from './reportes/ventas/ventas.component';
 import { ResultadosInventarioComponent } from './reportes/resultados-inventario/resultados-inventario.component';
 import { ResultadosSaleComponent } from './reportes/resultados_sale/resultados-sale.component';
+import { FacturasComponent } from './reportes/facturas/facturas.component';
 
 const routes: Routes = [
   {
@@ -32,6 +33,10 @@ const routes: Routes = [
 {
   path: 'sales',
   component: ResultadosSaleComponent
+},
+{
+  path: 'facturas',
+  component: FacturasComponent
 },
 {
     path: '**',

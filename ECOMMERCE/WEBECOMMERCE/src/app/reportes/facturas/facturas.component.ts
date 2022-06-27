@@ -34,7 +34,15 @@ export class FacturasComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  buscarSales() {
+  selecionaFecha() {
+    this.disable_hasta = true;
+    if (this.fecha_desde) {
+      this.debouncer.next(this.fecha_desde);
+      this.disable_hasta = false;
+    }
+
+  }
+  buscarFacturas() {
     this.cargando = true;
     this.facturas = [];
     this.ser.buscarfactura(this.estado,this.producto,this.nro_factura, this.fecha_desde,this.fecha_hasta,this.user).subscribe(
