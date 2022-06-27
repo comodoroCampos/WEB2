@@ -9,6 +9,8 @@ import { ResultadosVentasComponent } from './resultados-ventas/resultados-ventas
 import { ResultadosInventarioComponent } from './resultados-inventario/resultados-inventario.component';
 import { ResultadosSaleComponent } from './resultados_sale/resultados-sale.component';
 import { SaleComponent } from './sale/sale.component';
+import { FacturasComponent } from './facturas/facturas.component';
+import { FacturasResultadoComponent } from './facturas-resultado/facturas-resultado.component';
 
 
 
@@ -20,7 +22,9 @@ import { SaleComponent } from './sale/sale.component';
     ResultadosVentasComponent,
     ResultadosInventarioComponent,
     ResultadosSaleComponent,
-    SaleComponent
+    SaleComponent,
+    FacturasComponent,
+    FacturasResultadoComponent
   ],
   imports: [
     CommonModule,

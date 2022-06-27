@@ -119,6 +119,15 @@ export interface FacturaElement {
     created_at:  Date;
     status:      string;
     name:        string;
+    producto:        string;
+}
+export interface FacturaReporte {
+    nro_bill:    number;
+    bill_amount: string;
+    created_at:  Date;
+    status:      string;
+    name:        string;
+    producto:        string;
 }
 
 export interface Ticket {
@@ -132,4 +141,5 @@ export interface TicketElement {
     created_at:    Date;
     status:        string;
     name:          string;
+    producto:          string;
 }
