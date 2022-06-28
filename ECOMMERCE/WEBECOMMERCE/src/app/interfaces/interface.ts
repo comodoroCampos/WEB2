@@ -122,11 +122,19 @@ export interface FacturaElement {
     producto:        string;
 }
 export interface FacturaReporte {
-    nro_bill:    number;
-    bill_amount: string;
-    created_at:  Date;
-    status:      string;
-    name:        string;
+    folio:    number;
+    monto: string;
+    fecha:  Date;
+    estado:      string;
+    vendedor:        string;
+    producto:        string;
+}
+export interface TicketReporte {
+    boleta:    number;
+    monto: string;
+    fecha:  Date;
+    estado:      string;
+    vendedor:        string;
     producto:        string;
 }
 
