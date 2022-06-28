@@ -11,6 +11,8 @@ import { ResultadosSaleComponent } from './resultados_sale/resultados-sale.compo
 import { SaleComponent } from './sale/sale.component';
 import { FacturasComponent } from './facturas/facturas.component';
 import { FacturasResultadoComponent } from './facturas-resultado/facturas-resultado.component';
+import { TicketResultadoComponent } from './ticket-resultado/ticket-resultado.component';
+import { TicketComponent } from './ticket/ticket.component';
 
 
 
@@ -24,7 +26,9 @@ import { FacturasResultadoComponent } from './facturas-resultado/facturas-result
     ResultadosSaleComponent,
     SaleComponent,
     FacturasComponent,
-    FacturasResultadoComponent
+    FacturasResultadoComponent,
+    TicketResultadoComponent,
+    TicketComponent
   ],
   imports: [
     CommonModule,
@@ -40,7 +44,9 @@ import { FacturasResultadoComponent } from './facturas-resultado/facturas-result
     ResultadosSaleComponent,
     SaleComponent,
     FacturasComponent,
-    FacturasResultadoComponent
+    FacturasResultadoComponent,
+    TicketResultadoComponent,
+    TicketComponent
   ]
 })
 export class ReportesModule { }

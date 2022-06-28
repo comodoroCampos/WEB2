@@ -1,6 +1,6 @@
 <form>
     <h2 style="color: brown; text-align: center;">Favor ingrese sus filtros de busqueda para obtener su informe de
-        Facturas</h2>
+        Ticket</h2>
 
     <div class="container">
         <div class="row">
@@ -28,7 +28,7 @@
                 <input matInput type="text" name="usuario" [(ngModel)]="user" placeholder="Usuario" />
             </mat-form-field>
             <mat-form-field class="col-md-4">
-                <input matInput type="text" name="factura" [(ngModel)]="nro_factura" placeholder="Nro factura" />
+                <input matInput type="text" name="ticket" [(ngModel)]="nro_ticket" placeholder="Nro ticket" />
             </mat-form-field>
 
             <mat-form-field class="col-md-4">
@@ -55,7 +55,7 @@
 <div class="container">
     <div class="row">
         <mat-spinner class="col-md-12" *ngIf="(cargando)"></mat-spinner>
-        <app-facturas-resultado class="col-md-12" [facturas]="facturas" [facturasAux]="facturas" *ngIf="(facturas.length>0)">
-        </app-facturas-resultado>
+        <app-ticket-resultado class="col-md-12" [ticket]="tickets" [ticketAux]="tickets" *ngIf="(tickets.length>0)">
+        </app-ticket-resultado>
     </div>
 </div>

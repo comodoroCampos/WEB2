@@ -7,6 +7,7 @@ import { VentasComponent } from './reportes/ventas/ventas.component';
 import { ResultadosInventarioComponent } from './reportes/resultados-inventario/resultados-inventario.component';
 import { ResultadosSaleComponent } from './reportes/resultados_sale/resultados-sale.component';
 import { FacturasComponent } from './reportes/facturas/facturas.component';
+import { TicketComponent } from './reportes/ticket/ticket.component';
 
 const routes: Routes = [
   {
@@ -37,6 +38,10 @@ const routes: Routes = [
 {
   path: 'facturas',
   component: FacturasComponent
+},
+{
+  path: 'ticket',
+  component: TicketComponent
 },
 {
     path: '**',

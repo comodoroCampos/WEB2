@@ -20,7 +20,8 @@ export class FacturasResultadoComponent implements OnInit {
     'monto',
     'fecha',
     'nombre',
-    'producto'
+    'producto',
+    'estado'
   ];
   constructor() { 
     this.termino = '';
