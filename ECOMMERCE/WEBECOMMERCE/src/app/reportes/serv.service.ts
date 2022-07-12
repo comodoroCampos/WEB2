@@ -12,6 +12,7 @@ import {
   Inventario,
   Ticket,
   Factura,
+  VentasGrafico,
 } from '../interfaces/interface';
 import * as moment from 'moment';
 
@@ -77,6 +78,11 @@ export class ServService {
   let url = `${URL_SERVICIOS}/api/mysql/producto`;
    
     return this.http.get<Inventario>(url);
+  }
+  buscarVentasGrafico(): Observable<VentasGrafico> {
+  let url = `${URL_SERVICIOS}/api/mysql/sale/grafico`;
+   
+    return this.http.get<VentasGrafico>(url);
   }
 
   buscarTodasSales(

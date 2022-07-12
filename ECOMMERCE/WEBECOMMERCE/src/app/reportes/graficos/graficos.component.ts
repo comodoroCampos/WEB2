@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductoInventario } from 'src/app/interfaces/interface';
 import { ServService } from '../serv.service';
+import { VentaGrafico } from '../../interfaces/interface';
 
 @Component({
   selector: 'app-graficos',
@@ -9,18 +10,21 @@ import { ServService } from '../serv.service';
 })
 export class GraficosComponent implements OnInit {
   basicData: any;
+  ventaData: any;
   horizontalOptions: any;
+  basicOptions: any;
   cargando: boolean = false;
   productos: ProductoInventario[] = [];
+  ventas:VentaGrafico[]=[];
   label: string[] = [];
   data: number[] = [];
-
+  labelVenta: string[] = [];
+  dataVenta: number[] = [];
   constructor(private ser: ServService) {
     this.cargando = false;
     this.ser.buscarInventarioGrafico().subscribe(
       (prodd) => {
         this.productos = prodd.productos;
-        console.log(this.productos);
         for (const pr of this.productos) {
           this.label.push(pr.nombre);
           this.data.push(pr.stock);
@@ -39,6 +43,29 @@ export class GraficosComponent implements OnInit {
       (err) => {
         this.cargando = false;
         this.productos = [];
+      }
+    );
+    this.ser.buscarVentasGrafico().subscribe(
+      (venta) => {
+        this.ventas = venta.ventas;
+        for (const pr of this.ventas) {
+          this.labelVenta.push(pr.fecha);
+          this.dataVenta.push(pr.total);
+        }
+        this.ventaData = {
+          labels: this.labelVenta,
+          datasets: [
+            {
+              label: 'Ventas por dia',
+              backgroundColor: '#42A5F5',
+              data: this.dataVenta,
+            },
+          ],
+        };
+      },
+      (err) => {
+        this.cargando = false;
+        this.ventas = [];
       }
     );
 

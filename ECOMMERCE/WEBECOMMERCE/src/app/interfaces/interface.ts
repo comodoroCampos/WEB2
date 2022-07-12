@@ -151,3 +151,11 @@ export interface TicketElement {
     name:          string;
     producto:          string;
 }
+export interface VentasGrafico {
+    ventas: VentaGrafico[];
+}
+
+export interface VentaGrafico {
+    total: number;
+    fecha: string;
+}
