@@ -13,6 +13,7 @@ import { FacturasComponent } from './facturas/facturas.component';
 import { FacturasResultadoComponent } from './facturas-resultado/facturas-resultado.component';
 import { TicketResultadoComponent } from './ticket-resultado/ticket-resultado.component';
 import { TicketComponent } from './ticket/ticket.component';
+import { GraficosComponent } from './graficos/graficos.component';
 
 
 
@@ -28,7 +29,8 @@ import { TicketComponent } from './ticket/ticket.component';
     FacturasComponent,
     FacturasResultadoComponent,
     TicketResultadoComponent,
-    TicketComponent
+    TicketComponent,
+    GraficosComponent
   ],
   imports: [
     CommonModule,
@@ -46,7 +48,8 @@ import { TicketComponent } from './ticket/ticket.component';
     FacturasComponent,
     FacturasResultadoComponent,
     TicketResultadoComponent,
-    TicketComponent
+    TicketComponent,
+    GraficosComponent
   ]
 })
 export class ReportesModule { }

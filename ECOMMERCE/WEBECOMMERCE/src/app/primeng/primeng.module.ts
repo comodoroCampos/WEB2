@@ -10,6 +10,7 @@ import {TabViewModule} from 'primeng/tabview';
 import {DividerModule} from 'primeng/divider';
 import {DataViewModule} from 'primeng/dataview';
 import {TableModule} from 'primeng/table';
+import {ChartModule} from 'primeng/chart';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import {TableModule} from 'primeng/table';
     TabViewModule,
     DividerModule,
     DataViewModule,
-    TableModule
+    TableModule,
+    ChartModule
  
   ],
   exports: [
@@ -38,7 +40,8 @@ import {TableModule} from 'primeng/table';
     TabViewModule,
     DividerModule,
     DataViewModule,
-    TableModule
+    TableModule,
+    ChartModule
    
   ]
 })

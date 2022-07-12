@@ -73,6 +73,11 @@ export class ServService {
     }
     return this.http.get<Inventario>(url);
   }
+  buscarInventarioGrafico(): Observable<Inventario> {
+  let url = `${URL_SERVICIOS}/api/mysql/producto`;
+   
+    return this.http.get<Inventario>(url);
+  }
 
   buscarTodasSales(
     desde?: Date,
