@@ -34,7 +34,7 @@ export class GraficosComponent implements OnInit {
           datasets: [
             {
               label: 'Productos',
-              backgroundColor: '#42A5F5',
+              backgroundColor: '#4263F5',
               data: this.data,
             },
           ],
@@ -57,7 +57,7 @@ export class GraficosComponent implements OnInit {
           datasets: [
             {
               label: 'Ventas por dia',
-              backgroundColor: '#42A5F5',
+              backgroundColor: '#F2F542',
               data: this.dataVenta,
             },
           ],

@@ -1,9 +1,14 @@
 <div class="card">
-    <h5>ventas</h5>
+    <h5>Dashboard Ventas</h2>
     <p-chart type="bar" [data]="ventaData" [options]="basicOptions" *ngIf="ventas.length>0"></p-chart>
 
 </div>
+
+<div>
+    <spacer height="12"> ♢ </spacer>
+</div>
+
 <div class="card">
-    <h5>Inventario</h5>
+    <h5>Dashboard Stock</h2>
     <p-chart type="bar" [data]="basicData" [options]="horizontalOptions" *ngIf="productos.length>0"></p-chart>
 </div>
