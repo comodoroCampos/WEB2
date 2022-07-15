@@ -1,0 +1,28 @@
+<form>
+    <h2 style="color: brown; text-align: center;">Login</h2>
+
+    <div class="container">
+        <div class="row">
+
+         
+
+            <mat-form-field class="col-md-6">
+                <input matInput type="text" name="producto" [(ngModel)]="email" placeholder="Email" />
+            </mat-form-field>
+
+            <mat-form-field class="col-md-6">
+                <input matInput type="password" name="estado" [(ngModel)]="password" placeholder="password" />
+            </mat-form-field>
+
+        </div>
+    </div>
+
+    <div class="container" style="margin-top: 20px;">
+        <div class="row">
+            <button mat-raised-button color="primary" class="col-md-12" (click)="login()">
+                Ingresar
+               
+            </button>
+        </div>
+    </div>
+</form>

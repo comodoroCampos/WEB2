@@ -1,5 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { debounceTime, Subject } from 'rxjs';
+import { instanceOfToken } from 'src/app/constantes/utils';
 import { Sale, Sales, VentaCompleta } from '../../interfaces/interface';
 import { ServService } from '../serv.service';
 
@@ -26,7 +28,7 @@ export class ResultadosSaleComponent implements OnInit {
   disable_hasta: boolean = true;
   sales: VentaCompleta[] = [];
   diaActual : Date = new Date();
-  constructor(private ser: ServService) {
+  constructor(private ser: ServService,private router: Router) {
     this.cargando = false;
     this.diaActual = new Date();
   }
@@ -51,9 +53,13 @@ export class ResultadosSaleComponent implements OnInit {
     this.sales = [];
     this.ser.buscarTodasSales(this.fecha_desde, this.fecha_hasta, this.user, this.prod, this.estado).subscribe(
       (sall) => {
+        if(instanceOfToken(sall)){
+          this.router.navigate(['/login']);
+        }else{
         this.sales = sall.sales;
         console.log(this.sales);
         this.cargando = false;
+        }
       },
       (err) => {
         this.cargando = false;

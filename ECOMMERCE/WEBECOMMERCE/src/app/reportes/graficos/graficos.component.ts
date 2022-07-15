@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductoInventario } from 'src/app/interfaces/interface';
+import { ProductoInventario, Token, VentasGrafico } from 'src/app/interfaces/interface';
 import { ServService } from '../serv.service';
 import { VentaGrafico } from '../../interfaces/interface';
+import { instanceOfToken } from 'src/app/constantes/utils';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-graficos',
@@ -20,10 +22,13 @@ export class GraficosComponent implements OnInit {
   data: number[] = [];
   labelVenta: string[] = [];
   dataVenta: number[] = [];
-  constructor(private ser: ServService) {
+  constructor(private ser: ServService,private router: Router) {
     this.cargando = false;
     this.ser.buscarInventarioGrafico().subscribe(
       (prodd) => {
+        if(instanceOfToken(prodd)){
+          this.router.navigate(['/login']);
+        }else{     
         this.productos = prodd.productos;
         for (const pr of this.productos) {
           this.label.push(pr.nombre);
@@ -39,14 +44,19 @@ export class GraficosComponent implements OnInit {
             },
           ],
         };
+      }
       },
       (err) => {
         this.cargando = false;
         this.productos = [];
       }
     );
+    
     this.ser.buscarVentasGrafico().subscribe(
       (venta) => {
+      if(instanceOfToken(venta)){
+
+      }else{
         this.ventas = venta.ventas;
         for (const pr of this.ventas) {
           this.labelVenta.push(pr.fecha);
@@ -62,6 +72,7 @@ export class GraficosComponent implements OnInit {
             },
           ],
         };
+      }
       },
       (err) => {
         this.cargando = false;

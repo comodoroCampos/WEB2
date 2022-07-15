@@ -159,3 +159,7 @@ export interface VentaGrafico {
     total: number;
     fecha: string;
 }
+export interface Token{
+    ok: boolean;
+    token: string;
+}

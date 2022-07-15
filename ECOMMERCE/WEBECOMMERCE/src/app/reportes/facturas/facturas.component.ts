@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
+import { instanceOfToken } from 'src/app/constantes/utils';
 import { FacturaElement } from 'src/app/interfaces/interface';
 import { ServService } from '../serv.service';
 
@@ -27,7 +29,7 @@ export class FacturasComponent implements OnInit {
 
   diaActual : Date = new Date();
   cargando: boolean = false;
-  constructor(private ser: ServService) { 
+  constructor(private ser: ServService,private router: Router) { 
     this.cargando = false;
     this.diaActual = new Date();
   }
@@ -47,9 +49,13 @@ export class FacturasComponent implements OnInit {
     this.facturas = [];
     this.ser.buscarfactura(this.estado,this.producto,this.nro_factura, this.fecha_desde,this.fecha_hasta,this.user).subscribe(
       (sall) => {
+        if(instanceOfToken(sall)){
+          this.router.navigate(['/login']);
+        }else{
         this.facturas = sall.facturas;
         console.log(this.facturas);
         this.cargando = false;
+        }
       },
       (err) => {
         this.cargando = false;

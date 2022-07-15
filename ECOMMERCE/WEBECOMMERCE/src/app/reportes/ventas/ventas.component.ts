@@ -1,5 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { debounceTime, Subject } from 'rxjs';
+import { instanceOfToken } from 'src/app/constantes/utils';
 import { Venta } from 'src/app/interfaces/interface';
 import Swal from 'sweetalert2';
 import { ServService } from '../serv.service';
@@ -22,7 +24,7 @@ export class VentasComponent implements OnInit {
   @Output() onDebounce: EventEmitter<Date> = new EventEmitter();
   @Output() onEnter: EventEmitter<Date> = new EventEmitter();
   debouncer: Subject<Date> = new Subject();
-  constructor(private ventaService: ServService) {
+  constructor(private ventaService: ServService,private router: Router) {
     this.diaActual = new Date();
   }
 
@@ -47,9 +49,14 @@ export class VentasComponent implements OnInit {
     this.cargando = true;
     this.ventaService.buscarVentaPorFecha(this.fecha_desde!,this.fecha_hasta!,this.empleado).subscribe(
       (ven) => {
+        if(instanceOfToken(ven)){
+          console.log('')
+          this.router.navigate(['/login']);
+        }else{
         this.ventas = ven.venta;
         this.cargando = false;
         console.log(this.ventas);
+        }
       },
       (err) => {
         this.cargando = false;

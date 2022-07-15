@@ -9,6 +9,7 @@ import { ResultadosSaleComponent } from './reportes/resultados_sale/resultados-s
 import { FacturasComponent } from './reportes/facturas/facturas.component';
 import { TicketComponent } from './reportes/ticket/ticket.component';
 import { GraficosComponent } from './reportes/graficos/graficos.component';
+import { LoginComponent } from './reportes/login/login.component';
 
 const routes: Routes = [
   {
@@ -47,6 +48,10 @@ const routes: Routes = [
 {
   path: 'grafico',
   component: GraficosComponent
+},
+{
+  path: 'login',
+  component: LoginComponent
 },
 {
     path: '**',

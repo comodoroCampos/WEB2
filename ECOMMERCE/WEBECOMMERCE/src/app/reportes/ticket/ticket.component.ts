@@ -1,5 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
+import { instanceOfToken } from 'src/app/constantes/utils';
 import { TicketElement } from 'src/app/interfaces/interface';
 import { ServService } from '../serv.service';
 
@@ -26,7 +28,7 @@ export class TicketComponent implements OnInit {
 
   diaActual : Date = new Date();
   cargando: boolean = false;
-  constructor(private ser: ServService) { 
+  constructor(private ser: ServService,private router: Router) { 
     this.cargando = false;
     this.diaActual = new Date();
   }
@@ -45,10 +47,14 @@ export class TicketComponent implements OnInit {
     this.cargando = true;
     this.tickets = [];
     this.ser.buscarTicket(this.estado,this.producto,this.nro_ticket, this.fecha_desde,this.fecha_hasta,this.user).subscribe(
-      (sall) => {
+      (sall) => { 
+        if(instanceOfToken(sall)){
+          this.router.navigate(['/login']);
+        }else{
         this.tickets = sall.ticket;
         console.log(this.tickets);
         this.cargando = false;
+        }
       },
       (err) => {
         this.cargando = false;

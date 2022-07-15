@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { instanceOfToken } from 'src/app/constantes/utils';
 import { ProductoDuoc, ProductoInventario } from '../../interfaces/interface';
 import { ServService } from '../serv.service';
 
@@ -17,7 +19,7 @@ export class ResultadosInventarioComponent implements OnInit {
 
   productos: ProductoInventario[] = [];
 
-  constructor(private ser: ServService) {
+  constructor(private ser: ServService,private router: Router) {
     this.cargando = false;
 
   }
@@ -28,8 +30,12 @@ export class ResultadosInventarioComponent implements OnInit {
   buscarProductos() {
     this.ser.buscarInventario(this.prod, this.desc, this.precioIni, this.precioFin).subscribe(
       (prodd) => {
+        if(instanceOfToken(prodd)){
+          this.router.navigate(['/login']);
+        }else{
         this.productos = prodd.productos;
         this.cargando = false;
+        }
       },
       (err) => {
         this.cargando = false;
